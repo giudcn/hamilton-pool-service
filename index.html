@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamilton Pool Services | Clean Pools. Happy Homes.</title>
+    <meta name="description" content="Local, reliable, and professional pool care in Hamilton & area. Weekly maintenance, closing services, liner replacement, and safety covers. Book before Sept 15th for $299!">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0F2B5C",
+                        "navy-deep": "#081D3D",
+                        "ocean-blue": "#0072CE",
+                        "sky-bright": "#00A3E0",
+                        "offer-yellow": "#FFC700",
+                        "urgency-red": "#E31B23",
+                        "background": "#F4F8FC",
+                        "surface": "#FFFFFF",
+                        "on-surface": "#0F172A",
+                        "on-surface-variant": "#475569",
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "button": "10px",
+                    }
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        html {
+            scroll-padding-top: 7rem;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+        }
+        .service-card {
+            @apply relative overflow-hidden rounded-[2.5rem] bg-white border border-slate-200/80 shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-1.5;
+        }
+        .yellow-glow {
+            box-shadow: 0 0 35px rgba(255, 199, 0, 0.45);
+        }
+        .badge-icon {
+            @apply w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center shadow-md flex-shrink-0 border-2 border-white/20;
+        }
+        .pe-step { display: none; }
+        .pe-step.active { display: block; }
+        .pe-unit-toggle { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px; font-weight: bold; font-size: 14px; }
+        .active-unit { color: #0072CE; }
+        .pe-switch { position: relative; display: inline-block; width: 50px; height: 24px; }
+        .pe-switch input { opacity: 0; width: 0; height: 0; }
+        .pe-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .4s; border-radius: 34px; }
+        .pe-slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .pe-slider { background-color: #0072CE; }
+        input:checked + .pe-slider:before { transform: translateX(24px); }
+        .pe-loader { border: 4px solid #f3f3f3; border-top: 4px solid #0072CE; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        #mobile-menu.active, #booking-modal.active {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: scale(1) !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-sky-100 selection:text-sky-900">
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-navy-deep/95 backdrop-blur-xl flex flex-col items-center justify-center p-6 md:hidden opacity-0 invisible transition-all duration-300 transform scale-95">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white p-2 hover:bg-white/10 rounded-full transition-colors">
+            <span class="material-symbols-outlined text-4xl">close</span>
+        </button>
+        <div class="flex flex-col items-center gap-8 text-center w-full max-w-sm">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-offer-yellow text-4xl">water_drop</span>
+                <span class="text-2xl font-extrabold text-white tracking-wider font-headline">Hamilton Pool Services</span>
+            </div>
+            <nav class="flex flex-col gap-6 w-full">
+                <a href="#" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-offer-yellow transition-colors py-2 uppercase tracking-widest">Home</a>
+                <a href="#special-offer" onclick="toggleMenu()" class="text-2xl font-bold text-offer-yellow hover:text-white transition-colors py-2 uppercase tracking-widest">Sept 15 Closing Special</a>
+                <a href="#services" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-offer-yellow transition-colors py-2 uppercase tracking-widest">Services</a>
+                <a href="#calculator" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-offer-yellow transition-colors py-2 uppercase tracking-widest">Calculator</a>
+                <a href="#contact" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-offer-yellow transition-colors py-2 uppercase tracking-widest">Contact &amp; Book</a>
+            </nav>
+            <div class="mt-8 w-full">
+                <a href="tel:2895557665" class="call-btn bg-offer-yellow text-navy-deep px-8 py-4 rounded-button font-extrabold text-xl w-full flex items-center justify-center gap-3 shadow-xl">
+                    <span class="material-symbols-outlined text-2xl">call</span> (289) 555-POOL
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation Bar -->
+    <header class="fixed top-0 w-full z-50 bg-primary/95 backdrop-blur-md border-b border-white/10 text-white shadow-lg">
+        <div class="flex items-center justify-between px-6 h-20 w-full max-w-7xl mx-auto">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-offer-yellow text-navy-deep flex items-center justify-center font-black">
+                    <span class="material-symbols-outlined text-2xl">waves</span>
+                </div>
+                <div class="leading-tight">
+                    <span class="text-xl font-extrabold tracking-tight font-headline block">HAMILTON</span>
+                    <span class="text-xs font-bold tracking-widest text-sky-bright uppercase block">Pool Services</span>
+                </div>
+            </a>
+            <div class="flex items-center gap-8">
+                <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide">
+                    <a href="#" class="hover:text-offer-yellow transition-colors">Home</a>
+                    <a href="#special-offer" class="text-offer-yellow hover:underline flex items-center gap-1 font-bold">
+                        <span class="material-symbols-outlined text-base">verified</span> Closing Offer $299
+                    </a>
+                    <a href="#services" class="hover:text-offer-yellow transition-colors">Services</a>
+                    <a href="#calculator" class="hover:text-offer-yellow transition-colors">Volume Calculator</a>
+                    <a href="#contact" class="hover:text-offer-yellow transition-colors">Contact</a>
+                </nav>
+                <div class="hidden sm:flex items-center gap-4">
+                    <a href="tel:2895557665" class="call-btn bg-offer-yellow text-navy-deep px-5 py-2.5 rounded-button font-extrabold hover:bg-yellow-400 transition-all flex items-center gap-2 text-sm shadow-md">
+                        <span class="material-symbols-outlined text-lg">call</span> (289) 555-POOL
+                    </a>
+                </div>
+                <button onclick="toggleMenu()" class="material-symbols-outlined text-white text-3xl lg:hidden">menu</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+
+        <!-- Hero Section -->
+        <section class="relative min-h-[640px] flex items-center bg-gradient-to-br from-navy-deep via-primary to-ocean-blue text-white overflow-hidden py-16">
+            <div class="absolute inset-0 z-0 opacity-25">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-_tb-LvqBKfCSf_fXzVaiNIktTpxpCNIZ30AI-96FwfsGIa2DepsBZSE7iFhxlxiwEgj2kaQ0DIgHldu2PavIrh1maT1YAT6emp0UiMQMWXjpO-svchoWB9RAgDIGSj1Re5y2ddQ2dVfXiSCIfRKTnpWHMOioOM4d_xXB-L-8jLpWLtphhoZWL9CbNPaEtwmO0Fbohi-i5wqyyuy6S8uTwwrzNolnJfAAxvtJNqhZaDzkk9U4efp9RECIWUC6Ezto-I2ZjRIK82o" alt="Background pool" class="w-full h-full object-cover">
+            </div>
+            <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Hero Text Content -->
+                    <div class="lg:col-span-7 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 bg-offer-yellow/20 backdrop-blur-md px-4 py-2 rounded-full text-offer-yellow text-xs font-black uppercase tracking-widest mb-6 border border-offer-yellow/30">
+                            <span class="material-symbols-outlined text-sm">stars</span> Proudly Serving Hamilton &amp; Area
+                        </div>
+                        <h1 class="font-headline text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight">
+                            Clean Pools.<br>
+                            <span class="text-offer-yellow">Happy Homes.</span>
+                        </h1>
+                        <p class="text-lg sm:text-xl text-slate-200 mb-8 max-w-2xl font-normal leading-relaxed">
+                            Local, reliable, and professional pool care you can count on. <span class="italic font-medium text-white">We treat every pool like it's our own!</span>
+                        </p>
+
+                        <!-- Key Pillars Grid -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10 text-left">
+                            <div class="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/10">
+                                <span class="material-symbols-outlined text-offer-yellow text-2xl mb-1 block">verified_user</span>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-200 block">Reliable</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/10">
+                                <span class="material-symbols-outlined text-offer-yellow text-2xl mb-1 block">handshake</span>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-200 block">Honest Pricing</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/10">
+                                <span class="material-symbols-outlined text-offer-yellow text-2xl mb-1 block">home</span>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-200 block">Local Proud</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/10">
+                                <span class="material-symbols-outlined text-offer-yellow text-2xl mb-1 block">auto_awesome</span>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-200 block">Pure Water</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <button onclick="openBookingModal('Closing Special $299')" class="bg-offer-yellow text-navy-deep px-8 py-4 rounded-button font-black text-lg shadow-xl hover:bg-yellow-400 transition-all flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined">bolt</span> Book Closing Offer ($299)
+                            </button>
+                            <a href="#services" class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-button font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2">
+                                View Services
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mascot Feature Card -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative max-w-sm w-full">
+                            <div class="absolute -inset-2 bg-gradient-to-r from-offer-yellow via-sky-bright to-ocean-blue rounded-[3rem] blur-xl opacity-60"></div>
+                            <div class="relative bg-white rounded-[2.5rem] p-6 text-on-surface shadow-2xl text-center border border-white/40">
+                                <div class="bg-gradient-to-b from-sky-50 to-blue-100/60 rounded-[2rem] p-4 mb-4 overflow-hidden flex justify-center">
+                                    <img src="hamilton_mascot.jpg" alt="Hamilton Pool Services Mascot" class="max-h-[320px] object-contain drop-shadow-md">
+                                </div>
+                                <h3 class="font-headline font-extrabold text-xl text-primary">Meet Your Hamilton Pool Tech</h3>
+                                <p class="text-xs text-on-surface-variant font-medium mt-1">Prompt, uniformed professionals equipped for every pool care need.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Limited Time Offer Section (Flyer Highlight Box with Scroll Clearance Offset) -->
+        <section id="special-offer" class="py-20 bg-background relative overflow-hidden scroll-mt-28">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="bg-gradient-to-br from-navy-deep via-primary to-navy-deep rounded-[3rem] p-8 md:p-14 text-white relative shadow-2xl border-4 border-offer-yellow yellow-glow">
+                    
+                    <!-- Decorative Badge -->
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-offer-yellow text-navy-deep px-8 py-2 rounded-full font-black text-sm uppercase tracking-widest shadow-lg flex items-center gap-2">
+                        <span class="material-symbols-outlined text-lg">alarm</span> Limited Time Offer!
+                    </div>
+
+                    <div class="grid lg:grid-cols-12 gap-8 items-center mt-4">
+                        <div class="lg:col-span-7 text-center lg:text-left">
+                            <h2 class="font-headline text-3xl sm:text-5xl font-black leading-tight text-white mb-4">
+                                BOOK YOUR CLOSE<br>
+                                <span class="text-offer-yellow uppercase">BEFORE SEPTEMBER 15TH</span>
+                            </h2>
+                            <p class="text-lg text-slate-200 font-medium leading-relaxed mb-6">
+                                Secure your hassle-free winter pool closing appointment now. Includes complete line blowouts, winter chemical pack, and safety cover installation!
+                            </p>
+                            <ul class="space-y-2 text-sm text-slate-200 font-semibold mb-6 inline-block text-left">
+                                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-offer-yellow">check_circle</span> Lines completely blown out &amp; anti-freeze treated</li>
+                                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-offer-yellow">check_circle</span> Equipment winterization &amp; drain plugs removed</li>
+                                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-offer-yellow">check_circle</span> Safety cover or tarp secured perfectly</li>
+                            </ul>
+                        </div>
+
+                        <!-- Price Tag Callout Box -->
+                        <div class="lg:col-span-5 flex flex-col items-center">
+                            <div class="bg-offer-yellow text-navy-deep rounded-3xl p-8 text-center w-full max-w-xs shadow-xl transform rotate-1 hover:rotate-0 transition-transform">
+                                <p class="text-xs font-black uppercase tracking-widest text-navy-deep/80 mb-1">Regular Closing Price</p>
+                                <p class="text-2xl font-extrabold line-through text-urgency-red decoration-urgency-red decoration-4 mb-2">$399</p>
+                                <p class="text-xs font-black uppercase tracking-widest text-navy-deep mb-1">Special Discounted Rate</p>
+                                <div class="text-6xl font-black leading-none text-navy-deep tracking-tight mb-4">
+                                    <span class="text-3xl font-bold align-top">$</span>299
+                                </div>
+                                <button onclick="openBookingModal('Closing Special $299')" class="bg-navy-deep text-offer-yellow w-full py-3.5 rounded-button font-black text-base shadow-md hover:bg-black transition-all flex items-center justify-center gap-2">
+                                    Claim My $299 Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Grid Section (Matching Flyer Services & Badges) -->
+        <section id="services" class="py-24 bg-white scroll-mt-20">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-black text-ocean-blue uppercase tracking-[0.3em] block mb-3">Our Core Services</span>
+                    <h2 class="font-headline text-4xl sm:text-5xl font-extrabold text-navy-deep tracking-tight">Professional Pool Care</h2>
+                    <p class="text-on-surface-variant text-lg mt-4">Complete residential pool maintenance, opening, closing, and structural protection for Hamilton homes.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Service 1: Weekly Maintenance -->
+                    <div class="service-card flex flex-col p-8">
+                        <div class="badge-icon mb-6">
+                            <span class="material-symbols-outlined text-2xl">cleaning_services</span>
+                        </div>
+                        <h3 class="font-headline text-2xl font-extrabold text-navy-deep mb-3">Weekly Maintenance</h3>
+                        <p class="text-on-surface-variant text-base mb-6 flex-grow">Keep your pool sparkling clean and chemically balanced all season long. We handle vacuuming, skimming, and water testing.</p>
+                        <ul class="space-y-2 mb-8 text-sm text-slate-700 font-medium">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-ocean-blue text-lg">check_circle</span> Debris skimming &amp; wall brushing</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-ocean-blue text-lg">check_circle</span> Precise chemical dosing included</li>
+                        </ul>
+                        <button onclick="openBookingModal('Weekly Maintenance')" class="bg-primary text-white py-3.5 rounded-button font-bold text-center hover:bg-navy-deep transition-colors">Book Weekly Care</button>
+                    </div>
+
+                    <!-- Service 2: Closing Services -->
+                    <div class="service-card flex flex-col p-8 border-2 border-offer-yellow/50">
+                        <div class="badge-icon bg-offer-yellow text-navy-deep mb-6">
+                            <span class="material-symbols-outlined text-2xl">ac_unit</span>
+                        </div>
+                        <div class="inline-block bg-offer-yellow text-navy-deep px-3 py-1 rounded-md text-xs font-extrabold uppercase mb-2 self-start">Flyer Special $299</div>
+                        <h3 class="font-headline text-2xl font-extrabold text-navy-deep mb-3">Closing Services</h3>
+                        <p class="text-on-surface-variant text-base mb-6 flex-grow">Protect your pool all winter long against freeze damage. Thorough line blowing, equipment draining, and cover installation.</p>
+                        <ul class="space-y-2 mb-8 text-sm text-slate-700 font-medium">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-ocean-blue text-lg">check_circle</span> Deep line blowout &amp; freeze protection</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-ocean-blue text-lg">check_circle</span> Winter chemical shock application</li>
+                        </ul>
+                        <button onclick="openBookingModal('Closing Special $299')" class="bg-offer-yellow text-navy-deep py-3.5 rounded-button font-extrabold text-center hover:bg-yellow-400 transition-colors">Book Closing ($299)</button>
+                    </div>
+
+                    <!-- Service 3: Water Balancing -->
+                    <div class="service-card flex flex-col p-8">
+                        <div class="badge-icon mb-6">
+                            <span class="material-symbols-outlined text-2xl">water_drop</span>
+                        </div>
+                        <h3 class="font-headline text-2xl font-extrabold text-navy-deep mb-3">Water Balancing</h3>
+                        <p class="text-on-surface-variant text-base mb-6 flex-grow">Perfectly balanced water every time. We test pH, alkalinity, calcium hardness, and sanitizer levels for clear, safe swimming.</p>
+                        <ul class="space-y-2 mb-8 text-sm text-slate-700 font-medium">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-ocean-blue text-lg">check_circle</span> Prevents liner staining &amp; corrosion</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-ocean-blue text-lg">check_circle</span> Safe for eyes and skin</li>
+                        </ul>
+                        <button onclick="openBookingModal('Water Balancing')" class="bg-primary text-white py-3.5 rounded-button font-bold text-center hover:bg-navy-deep transition-colors">Test My Water</button>
+                    </div>
+
+                    <!-- Service 4: Equipment Checks -->
+                    <div class="service-card flex flex-col p-8">
+                        <div class="badge-icon mb-6">
+                            <span class="material-symbols-outlined text-2xl">fact_check</span>
+                        </div>
+                        <h3 class="font-headline text-2xl font-extrabold text-navy-deep mb-3">Equipment Checks</h3>
+                        <p class="text-on-surface-variant text-base mb-6 flex-grow">Ensure everything runs smoothly. Inspection of pumps, sand/cartridge filters, heaters, salt cells, and plumbing lines.</p>
+                        <ul class="space-y-2 mb-8 text-sm text-slate-700 font-medium">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-ocean-blue text-lg">check_circle</span> Full operational diagnostic</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-ocean-blue text-lg">check_circle</span> Preventative leak &amp; pressure audit</li>
+                        </ul>
+                        <button onclick="openBookingModal('Equipment Check')" class="bg-primary text-white py-3.5 rounded-button font-bold text-center hover:bg-navy-deep transition-colors">Schedule Inspection</button>
+                    </div>
+
+                    <!-- Service 5: Liner Installation & Replacement -->
+                    <div class="service-card flex flex-col p-8">
+                        <div class="badge-icon mb-6">
+                            <span class="material-symbols-outlined text-2xl">pool</span>
+                        </div>
+                        <h3 class="font-headline text-2xl font-extrabold text-navy-deep mb-3">Liner Replacement</h3>
+                        <p class="text-on-surface-variant text-base mb-6 flex-grow">Transform your pool with vibrant, high-quality vinyl liners. Precise custom measurements for a wrinkle-free, perfect fit.</p>
+                        <ul class="space-y-2 mb-8 text-sm text-slate-700 font-medium">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-ocean-blue text-lg">check_circle</span> Premium Canadian-grade liners</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-ocean-blue text-lg">check_circle</span> Expert precision installation</li>
+                        </ul>
+                        <button onclick="openBookingModal('Liner Replacement Quote')" class="bg-primary text-white py-3.5 rounded-button font-bold text-center hover:bg-navy-deep transition-colors">Get Liner Quote</button>
+                    </div>
+
+                    <!-- Service 6: Safety Cover Installation -->
+                    <div class="service-card flex flex-col p-8">
+                        <div class="badge-icon mb-6">
+                            <span class="material-symbols-outlined text-2xl">shield</span>
+                        </div>
+                        <h3 class="font-headline text-2xl font-extrabold text-navy-deep mb-3">Safety Cover Installation</h3>
+                        <p class="text-on-surface-variant text-base mb-6 flex-grow">Durable, custom fitted safety covers to protect kids, pets, and your pool structure with complete peace of mind all winter.</p>
+                        <ul class="space-y-2 mb-8 text-sm text-slate-700 font-medium">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-ocean-blue text-lg">check_circle</span> Heavy-duty mesh &amp; solid options</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-ocean-blue text-lg">check_circle</span> Anchored brass hardware fitting</li>
+                        </ul>
+                        <button onclick="openBookingModal('Safety Cover Installation')" class="bg-primary text-white py-3.5 rounded-button font-bold text-center hover:bg-navy-deep transition-colors">Request Cover Estimate</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Pool Volume Calculator Section (From Ottawa Architecture) -->
+        <section id="calculator" class="py-24 bg-navy-deep text-white relative overflow-hidden scroll-mt-20">
+            <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-sky-bright font-bold tracking-widest uppercase text-xs block mb-4">Interactive Tool</span>
+                    <h2 class="font-headline text-4xl sm:text-5xl font-extrabold mb-6 leading-tight">
+                        Calculate Your Pool Volume &amp; Care Plan
+                    </h2>
+                    <p class="text-slate-300 text-lg mb-8 font-normal leading-relaxed">
+                        Knowing your pool's exact gallonage ensures accurate chemical balancing and accurate service pricing.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex gap-4 items-start">
+                            <div class="badge-icon bg-white/10 text-offer-yellow">
+                                <span class="material-symbols-outlined text-2xl">calculate</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Instant Volume Calculation</h4>
+                                <p class="text-slate-400 text-sm">Calculates exact gallons or liters based on length, width, and depth.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="badge-icon bg-white/10 text-offer-yellow">
+                                <span class="material-symbols-outlined text-2xl">description</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Free Customized Pool Report</h4>
+                                <p class="text-slate-400 text-sm">Get an automated chemical dosage guide sent directly to your inbox.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator Card -->
+                <div class="bg-white text-on-surface p-8 sm:p-12 rounded-[2.5rem] shadow-2xl relative">
+                    <div class="absolute -top-4 -right-4 bg-offer-yellow text-navy-deep px-5 py-1.5 rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
+                        Free Tool
+                    </div>
+                    <h3 class="font-headline text-2xl font-extrabold mb-6 text-center text-navy-deep">Pool Volume Calculator</h3>
+
+                    <div id="step-container">
+                        
+                        <!-- Step 1: Shape -->
+                        <div class="pe-step active" id="v-step-1">
+                            <div class="pe-unit-toggle">
+                                <span id="label-imperial" class="active-unit">Imperial (ft)</span>
+                                <label class="pe-switch">
+                                    <input type="checkbox" id="unit-toggle" onchange="toggleUnits()">
+                                    <span class="pe-slider"></span>
+                                </label>
+                                <span id="label-metric">Metric (m)</span>
+                            </div>
+                            <p class="text-center text-xs text-slate-500 font-bold uppercase tracking-widest mb-6">Select Pool Shape</p>
+                            <div class="grid gap-3">
+                                <button onclick="nextVStep(1, 'Rectangular')" class="w-full py-4 border border-slate-200 rounded-2xl hover:border-ocean-blue hover:bg-sky-50 text-left px-6 font-bold flex justify-between items-center transition-all group">
+                                    Rectangular Pool
+                                    <span class="material-symbols-outlined text-slate-400 group-hover:text-ocean-blue">square</span>
+                                </button>
+                                <button onclick="nextVStep(1, 'Circular')" class="w-full py-4 border border-slate-200 rounded-2xl hover:border-ocean-blue hover:bg-sky-50 text-left px-6 font-bold flex justify-between items-center transition-all group">
+                                    Circular / Round Pool
+                                    <span class="material-symbols-outlined text-slate-400 group-hover:text-ocean-blue">circle</span>
+                                </button>
+                                <button onclick="nextVStep(1, 'Oval')" class="w-full py-4 border border-slate-200 rounded-2xl hover:border-ocean-blue hover:bg-sky-50 text-left px-6 font-bold flex justify-between items-center transition-all group">
+                                    Oval Pool
+                                    <span class="material-symbols-outlined text-slate-400 group-hover:text-ocean-blue">change_history</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Dimensions -->
+                        <div class="pe-step" id="v-step-2">
+                            <h4 id="dim-title" class="text-lg font-bold mb-4 text-navy-deep">Enter Pool Dimensions</h4>
+                            <div id="inputs-container" class="space-y-4"></div>
+                            <button onclick="calculateVolume()" class="w-full bg-ocean-blue text-white py-4 rounded-button font-bold mt-6 hover:bg-primary transition-all shadow-lg">Calculate Gallons</button>
+                            <button onclick="location.reload()" class="w-full text-slate-400 text-xs font-bold uppercase tracking-widest mt-4 hover:text-navy-deep">Reset</button>
+                        </div>
+
+                        <!-- Step Loading -->
+                        <div class="pe-step" id="v-step-loading">
+                            <div class="pe-loader"></div>
+                            <p class="text-center font-medium text-slate-600 mt-4">Calculating exact volume...</p>
+                        </div>
+
+                        <!-- Step Lead Form -->
+                        <div class="pe-step" id="v-step-lead">
+                            <h4 class="text-xl font-bold mb-2 text-center text-navy-deep">Calculation Ready!</h4>
+                            <p class="text-slate-500 text-center text-sm mb-6">Enter your contact info to unlock your volume result and receive your custom care proposal.</p>
+                            <form id="v-lead-form" class="space-y-3">
+                                <input type="text" name="name" placeholder="Full Name" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
+                                <input type="email" name="email" placeholder="Email Address" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
+                                <input type="tel" name="phone" placeholder="Phone Number" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Preferred Date</label>
+                                    <input type="date" name="preferred_date" required min="2026-08-10" value="2026-09-10" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
+                                </div>
+                                <div class="flex items-start gap-2 text-xs text-slate-500 mt-2">
+                                    <input type="checkbox" id="v-optin" required class="mt-0.5 rounded border-slate-300 text-ocean-blue focus:ring-ocean-blue">
+                                    <label for="v-optin">I consent to receive SMS and email communications regarding my pool service quote from Hamilton Pool Services as per CASL guidelines. You can opt out at any time.</label>
+                                </div>
+                                <button type="submit" class="w-full bg-offer-yellow text-navy-deep py-4 rounded-button font-black mt-2 shadow-lg hover:bg-yellow-400 transition-all text-base">View Volume Report</button>
+                            </form>
+                        </div>
+
+                        <!-- Step Success -->
+                        <div class="pe-step text-center" id="v-step-success">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="material-symbols-outlined text-green-600 text-4xl">check_circle</span>
+                            </div>
+                            <p class="text-slate-400 uppercase tracking-widest font-bold text-xs mb-1">Estimated Pool Volume</p>
+                            <div class="mb-6">
+                                <span id="final-volume" class="text-5xl font-black text-navy-deep">0</span>
+                                <span id="final-unit" class="text-lg font-bold text-slate-400 ml-1 uppercase">Gallons</span>
+                            </div>
+                            <p class="text-slate-600 text-sm mb-6">Your customized care breakdown has been saved. Call us at <strong>(289) 555-POOL</strong> to schedule your service!</p>
+                            <a href="tel:2895557665" class="call-btn inline-block w-full bg-navy-deep text-offer-yellow py-4 rounded-button font-extrabold">Call Now to Book</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dedicated Contact Form & Booking Section -->
+        <section id="contact" class="py-24 bg-white relative scroll-mt-20">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="bg-background rounded-[3rem] p-8 md:p-14 border border-slate-200 shadow-xl">
+                    <div class="text-center max-w-2xl mx-auto mb-10">
+                        <span class="text-xs font-black text-ocean-blue uppercase tracking-[0.3em] block mb-2">Get in Touch</span>
+                        <h2 class="font-headline text-3xl sm:text-4xl font-extrabold text-navy-deep">Book Service &amp; Request Quote</h2>
+                        <p class="text-on-surface-variant text-base mt-2">Fill out the form below to choose your preferred date for service.</p>
+                    </div>
+
+                    <form id="main-contact-form" onsubmit="handleMainFormSubmit(event)" class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-2">Full Name *</label>
+                            <input type="text" id="main-name" required placeholder="John Smith" class="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-2">Phone Number *</label>
+                            <input type="tel" id="main-phone" required placeholder="(289) 555-0199" class="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-2">Email Address *</label>
+                            <input type="email" id="main-email" required placeholder="john@example.com" class="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-2">Service Required *</label>
+                            <select id="main-service" required class="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm font-semibold">
+                                <option value="Closing Special $299" selected>Closing Special - $299 (Before Sept 15)</option>
+                                <option value="Weekly Maintenance">Weekly Maintenance Plan</option>
+                                <option value="Water Balancing">Water Balancing Service</option>
+                                <option value="Equipment Check">Equipment Diagnostic Inspection</option>
+                                <option value="Liner Replacement">Liner Replacement Quote</option>
+                                <option value="Safety Cover Installation">Safety Cover Installation</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-2">Preferred Date Calendar *</label>
+                            <input type="date" id="main-date" required min="2026-08-10" value="2026-09-10" class="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm font-semibold">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-2">Service Area / City *</label>
+                            <input type="text" id="main-city" required placeholder="Hamilton, Ancaster, Dundas..." class="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-2">Special Requests or Notes</label>
+                            <textarea id="main-notes" rows="3" placeholder="Tell us about your pool type, size, or specific needs..." class="w-full p-4 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm"></textarea>
+                        </div>
+                        
+                        <!-- CASL Canadian Compliance Opt-in Checkbox -->
+                        <div class="md:col-span-2 flex items-start gap-3 bg-white p-4 rounded-xl border border-slate-200">
+                            <input type="checkbox" id="main-optin" required class="mt-1 rounded border-slate-300 text-ocean-blue focus:ring-ocean-blue">
+                            <label for="main-optin" class="text-xs text-slate-600 leading-relaxed">
+                                I consent to receive SMS and email communications regarding my pool service request from Hamilton Pool Services as per Canadian Anti-Spam Legislation (CASL) guidelines. You can opt out at any time. *
+                            </label>
+                        </div>
+
+                        <div class="md:col-span-2 text-center mt-2">
+                            <button type="submit" class="bg-offer-yellow text-navy-deep px-10 py-4 rounded-button font-black text-lg shadow-xl hover:bg-yellow-400 transition-all w-full md:w-auto min-w-[280px]">
+                                Submit Lead &amp; Reserve Date
+                            </button>
+                        </div>
+                    </form>
+                    <div id="main-form-success" class="hidden text-center py-8">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="material-symbols-outlined text-green-600 text-4xl">check_circle</span>
+                        </div>
+                        <h3 class="font-headline text-2xl font-extrabold text-navy-deep mb-2">Lead Submitted Successfully!</h3>
+                        <p class="text-slate-600">Your requested service and preferred date have been saved. Our team will contact you shortly to confirm your booking.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Pillars & Why Choose Us (From Flyer) -->
+        <section id="about" class="py-24 bg-white scroll-mt-20">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-black text-ocean-blue uppercase tracking-[0.3em] block mb-3">The Hamilton Way</span>
+                    <h2 class="font-headline text-4xl sm:text-5xl font-extrabold text-navy-deep tracking-tight">Why Homeowners Trust Us</h2>
+                    <p class="text-on-surface-variant text-lg mt-4">We treat every pool like it's our own. Here is our promise to every client in Hamilton &amp; surrounding communities.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Pillar 1 -->
+                    <div class="bg-background p-8 rounded-3xl border border-slate-200 text-center flex flex-col items-center">
+                        <div class="w-16 h-16 bg-primary text-offer-yellow rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                            <span class="material-symbols-outlined text-3xl">verified_user</span>
+                        </div>
+                        <h3 class="font-headline text-xl font-extrabold text-navy-deep mb-2">Reliable &amp; Trustworthy</h3>
+                        <p class="text-on-surface-variant text-sm">On time, every time. Precise scheduling and clear communication before and after every service visit.</p>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="bg-background p-8 rounded-3xl border border-slate-200 text-center flex flex-col items-center">
+                        <div class="w-16 h-16 bg-primary text-offer-yellow rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                            <span class="material-symbols-outlined text-3xl">handshake</span>
+                        </div>
+                        <h3 class="font-headline text-xl font-extrabold text-navy-deep mb-2">Honest Pricing</h3>
+                        <p class="text-on-surface-variant text-sm">No surprises. No upsells. Upfront transparent flat-rate pricing for openings, closings, and maintenance.</p>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="bg-background p-8 rounded-3xl border border-slate-200 text-center flex flex-col items-center">
+                        <div class="w-16 h-16 bg-primary text-offer-yellow rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                            <span class="material-symbols-outlined text-3xl">home</span>
+                        </div>
+                        <h3 class="font-headline text-xl font-extrabold text-navy-deep mb-2">Local &amp; Proud</h3>
+                        <p class="text-on-surface-variant text-sm">Proudly serving Hamilton, Ancaster, Dundas, Stoney Creek, Waterdown, and surrounding areas.</p>
+                    </div>
+
+                    <!-- Pillar 4 -->
+                    <div class="bg-background p-8 rounded-3xl border border-slate-200 text-center flex flex-col items-center">
+                        <div class="w-16 h-16 bg-primary text-offer-yellow rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                            <span class="material-symbols-outlined text-3xl">auto_awesome</span>
+                        </div>
+                        <h3 class="font-headline text-xl font-extrabold text-navy-deep mb-2">Clean Pools, Happy Homes</h3>
+                        <p class="text-on-surface-variant text-sm">Crystal clear water guaranteed so your family can enjoy stress-free swimming all summer long.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Area / Local Coverage Section -->
+        <section class="py-20 bg-background border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <span class="text-xs font-black text-ocean-blue uppercase tracking-[0.3em] block mb-3">Service Area</span>
+                <h2 class="font-headline text-3xl sm:text-4xl font-extrabold text-navy-deep mb-8">Proudly Serving Hamilton &amp; Surrounding Areas</h2>
+                <div class="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+                    <span class="bg-white px-5 py-2.5 rounded-full text-navy-deep font-bold border border-slate-200 shadow-sm">Hamilton</span>
+                    <span class="bg-white px-5 py-2.5 rounded-full text-navy-deep font-bold border border-slate-200 shadow-sm">Ancaster</span>
+                    <span class="bg-white px-5 py-2.5 rounded-full text-navy-deep font-bold border border-slate-200 shadow-sm">Dundas</span>
+                    <span class="bg-white px-5 py-2.5 rounded-full text-navy-deep font-bold border border-slate-200 shadow-sm">Stoney Creek</span>
+                    <span class="bg-white px-5 py-2.5 rounded-full text-navy-deep font-bold border border-slate-200 shadow-sm">Waterdown</span>
+                    <span class="bg-white px-5 py-2.5 rounded-full text-navy-deep font-bold border border-slate-200 shadow-sm">Mount Hope</span>
+                    <span class="bg-white px-5 py-2.5 rounded-full text-navy-deep font-bold border border-slate-200 shadow-sm">Binbrook</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-deep text-white pt-16 pb-12 px-6 border-t border-white/10 relative">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 mb-12">
+            
+            <div class="md:col-span-5">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-offer-yellow text-navy-deep flex items-center justify-center font-black">
+                        <span class="material-symbols-outlined text-2xl">waves</span>
+                    </div>
+                    <span class="font-headline font-black text-2xl tracking-tight">Hamilton Pool Services</span>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                    CLEAN POOLS. HAPPY HOMES.<br>
+                    Local, reliable, and professional pool care you can count on. We treat every pool like it's our own!
+                </p>
+                <p class="text-xs text-offer-yellow italic font-bold">
+                    LOCAL. RELIABLE. PROFESSIONAL. That's the Hamilton way.
+                </p>
+            </div>
+
+            <div class="md:col-span-3">
+                <h4 class="font-bold text-white text-xs uppercase tracking-widest mb-4">Services</h4>
+                <ul class="space-y-2.5 text-slate-300 text-sm font-medium">
+                    <li><a href="#services" class="hover:text-offer-yellow transition-colors">Weekly Maintenance</a></li>
+                    <li><a href="#special-offer" class="hover:text-offer-yellow transition-colors">Closing Services ($299 Special)</a></li>
+                    <li><a href="#services" class="hover:text-offer-yellow transition-colors">Water Balancing</a></li>
+                    <li><a href="#services" class="hover:text-offer-yellow transition-colors">Equipment Checks</a></li>
+                    <li><a href="#services" class="hover:text-offer-yellow transition-colors">Liner Replacement</a></li>
+                    <li><a href="#services" class="hover:text-offer-yellow transition-colors">Safety Cover Installation</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-4">
+                <h4 class="font-bold text-white text-xs uppercase tracking-widest mb-4">Contact Info</h4>
+                <ul class="space-y-3 text-slate-300 text-sm">
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-offer-yellow">call</span>
+                        <a href="tel:2895557665" class="call-btn hover:underline font-bold text-white">(289) 555-POOL (7665)</a>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-offer-yellow">language</span>
+                        <a href="https://hamiltonpoolservices.ca" target="_blank" class="hover:underline">hamiltonpoolservices.ca</a>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-offer-yellow">location_on</span>
+                        <span>Proudly Serving Hamilton &amp; Surrounding Areas</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Footer Credits & Developer Attribution -->
+        <div class="max-w-7xl mx-auto border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400 font-medium">
+            <p>&copy; 2026 Hamilton Pool Services. All Rights Reserved. Clean Pools. Happy Homes.</p>
+            <p class="flex items-center gap-1.5 text-slate-300">
+                Developed by <a href="https://boostmyleads.ca" target="_blank" class="font-bold text-offer-yellow hover:underline tracking-wide">Boost My Leads</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Pop-up Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-[120] bg-navy-deep/80 backdrop-blur-md flex items-center justify-center p-4 opacity-0 invisible transition-all duration-300 transform scale-95">
+        <div class="bg-white rounded-[2.5rem] p-8 max-w-lg w-full relative shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-slate-400 hover:text-navy-deep p-2">
+                <span class="material-symbols-outlined text-3xl">close</span>
+            </button>
+            <div class="text-center mb-6">
+                <span class="text-xs font-black text-ocean-blue uppercase tracking-[0.3em] block mb-1">Instant Reservation</span>
+                <h3 id="modal-service-title" class="font-headline text-2xl font-extrabold text-navy-deep">Book Closing Special ($299)</h3>
+                <p class="text-xs text-slate-500 mt-1">Select your preferred date &amp; details below.</p>
+            </div>
+            <form onsubmit="handleModalFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-1">Full Name *</label>
+                    <input type="text" id="modal-name" required placeholder="John Smith" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-1">Phone Number *</label>
+                    <input type="tel" id="modal-phone" required placeholder="(289) 555-0199" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-1">Email Address *</label>
+                    <input type="email" id="modal-email" required placeholder="john@example.com" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-1">Preferred Date Calendar *</label>
+                    <input type="date" id="modal-date" required min="2026-08-10" value="2026-09-10" class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm font-semibold">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase tracking-widest mb-1">City / Area *</label>
+                    <input type="text" id="modal-city" required placeholder="Hamilton, Ancaster, Dundas..." class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
+                </div>
+                <div class="flex items-start gap-2 text-xs text-slate-500 mt-2">
+                    <input type="checkbox" id="modal-optin" required class="mt-0.5 rounded border-slate-300 text-ocean-blue focus:ring-ocean-blue">
+                    <label for="modal-optin">I consent to receive SMS and email communications regarding my pool service quote from Hamilton Pool Services as per CASL guidelines. You can opt out at any time. *</label>
+                </div>
+                <button type="submit" class="w-full bg-offer-yellow text-navy-deep py-4 rounded-button font-black text-base shadow-lg hover:bg-yellow-400 transition-all mt-2">
+                    Confirm Preferred Date &amp; Submit
+                </button>
+            </form>
+            <div id="modal-form-success" class="hidden text-center py-6">
+                <span class="material-symbols-outlined text-green-600 text-5xl mb-2 block">check_circle</span>
+                <h4 class="font-extrabold text-xl text-navy-deep">Reservation Recorded!</h4>
+                <p class="text-sm text-slate-600 mt-2">Your request and preferred date have been submitted. Our team will contact you shortly.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Scripts -->
+    <script>
+        let isMetric = false;
+        let poolData = { shape: '', volume: 0 };
+        let isMenuOpen = false;
+        let currentModalService = "Closing Special $299";
+
+        // Webhook Endpoint Configuration
+        let GHL_WEBHOOK_URL = localStorage.getItem('hamilton_ghl_webhook') || "https://services.leadconnectorhq.com/hooks/sample_endpoint";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initCallTracking();
+        });
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            const menu = document.getElementById('mobile-menu');
+            if (isMenuOpen) {
+                menu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                menu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Modal Controls
+        function openBookingModal(serviceName) {
+            currentModalService = serviceName || "Closing Special $299";
+            document.getElementById('modal-service-title').innerText = currentModalService;
+            document.getElementById('booking-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Lead & Call Tracking Engine (Silent Recording for Backend Dashboard)
+        function initCallTracking() {
+            document.querySelectorAll('.call-btn, a[href^="tel:"]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    recordCallEvent();
+                });
+            });
+        }
+
+        function recordCallEvent() {
+            let calls = parseInt(localStorage.getItem('hamilton_total_calls') || '0', 10);
+            calls += 1;
+            localStorage.setItem('hamilton_total_calls', calls.toString());
+
+            const callLog = JSON.parse(localStorage.getItem('hamilton_lead_logs') || '[]');
+            const event = {
+                type: 'CLICK_TO_CALL',
+                timestamp: new Date().toISOString(),
+                phone: '(289) 555-7665',
+                source: window.location.href,
+                page_domain: 'hamiltonpoolservices.ca'
+            };
+            callLog.unshift(event);
+            localStorage.setItem('hamilton_lead_logs', JSON.stringify(callLog));
+
+            // Post event payload silently
+            postToGHL(event);
+        }
+
+        function handleMainFormSubmit(e) {
+            e.preventDefault();
+            const lead = {
+                type: 'FORM_SUBMISSION',
+                timestamp: new Date().toISOString(),
+                name: document.getElementById('main-name').value,
+                phone: document.getElementById('main-phone').value,
+                email: document.getElementById('main-email').value,
+                service: document.getElementById('main-service').value,
+                preferred_date: document.getElementById('main-date').value,
+                city: document.getElementById('main-city').value,
+                notes: document.getElementById('main-notes').value,
+                casl_optin: document.getElementById('main-optin').checked,
+                page_domain: 'hamiltonpoolservices.ca'
+            };
+
+            saveAndDispatchLead(lead);
+            document.getElementById('main-contact-form').reset();
+            document.getElementById('main-contact-form').classList.add('hidden');
+            document.getElementById('main-form-success').classList.remove('hidden');
+        }
+
+        function handleModalFormSubmit(e) {
+            e.preventDefault();
+            const lead = {
+                type: 'MODAL_RESERVATION',
+                timestamp: new Date().toISOString(),
+                name: document.getElementById('modal-name').value,
+                phone: document.getElementById('modal-phone').value,
+                email: document.getElementById('modal-email').value,
+                service: currentModalService,
+                preferred_date: document.getElementById('modal-date').value,
+                city: document.getElementById('modal-city').value,
+                casl_optin: document.getElementById('modal-optin').checked,
+                page_domain: 'hamiltonpoolservices.ca'
+            };
+
+            saveAndDispatchLead(lead);
+            document.querySelector('#booking-modal form').classList.add('hidden');
+            document.getElementById('modal-form-success').classList.remove('hidden');
+        }
+
+        function saveAndDispatchLead(lead) {
+            let leads = parseInt(localStorage.getItem('hamilton_total_leads') || '0', 10);
+            leads += 1;
+            localStorage.setItem('hamilton_total_leads', leads.toString());
+
+            const leadLog = JSON.parse(localStorage.getItem('hamilton_lead_logs') || '[]');
+            leadLog.unshift(lead);
+            localStorage.setItem('hamilton_lead_logs', JSON.stringify(leadLog));
+
+            postToGHL(lead);
+        }
+
+        function postToGHL(payload) {
+            fetch(GHL_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).catch(err => console.warn("Webhook Notice:", err));
+        }
+
+        // Volume Calculator Mechanics
+        function toggleUnits() {
+            isMetric = document.getElementById('unit-toggle').checked;
+            document.getElementById('label-imperial').classList.toggle('active-unit', !isMetric);
+            document.getElementById('label-metric').classList.toggle('active-unit', isMetric);
+        }
+
+        function nextVStep(current, shape) {
+            poolData.shape = shape;
+            const container = document.getElementById('inputs-container');
+            const unitLabel = isMetric ? '(m)' : '(ft)';
+            container.innerHTML = '';
+            let fields = (shape === 'Rectangular') ? ['Length', 'Width', 'Average Depth'] :
+                         (shape === 'Circular') ? ['Diameter', 'Average Depth'] :
+                         ['Long Diameter', 'Short Diameter', 'Average Depth'];
+            fields.forEach(field => {
+                const id = `v-${field.toLowerCase().replace(/ /g, '-')}`;
+                container.innerHTML += `
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">${field} ${unitLabel}</label>
+                        <input type="number" id="${id}" step="0.1" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm" placeholder="0.0" required>
+                    </div>`;
+            });
+            document.getElementById(`v-step-${current}`).classList.remove('active');
+            document.getElementById(`v-step-${current + 1}`).classList.add('active');
+        }
+
+        function calculateVolume() {
+            const avgDepthInput = document.getElementById('v-average-depth');
+            const avgDepth = avgDepthInput ? parseFloat(avgDepthInput.value || 0) : 0;
+            let baseVolume = 0;
+            if (poolData.shape === 'Rectangular') {
+                baseVolume = parseFloat(document.getElementById('v-length').value || 0) * parseFloat(document.getElementById('v-width').value || 0) * avgDepth;
+            } else if (poolData.shape === 'Circular') {
+                const r = parseFloat(document.getElementById('v-diameter').value || 0) / 2;
+                baseVolume = Math.PI * Math.pow(r, 2) * avgDepth;
+            } else if (poolData.shape === 'Oval') {
+                const r1 = parseFloat(document.getElementById('v-long-diameter').value || 0) / 2;
+                const r2 = parseFloat(document.getElementById('v-short-diameter').value || 0) / 2;
+                baseVolume = Math.PI * r1 * r2 * avgDepth;
+            }
+            poolData.volume = isMetric ? Math.round(baseVolume * 1000) : Math.round(baseVolume * 7.48);
+            document.getElementById('final-unit').innerText = isMetric ? 'Liters' : 'Gallons';
+            document.getElementById('v-step-2').classList.remove('active');
+            document.getElementById('v-step-loading').classList.add('active');
+            setTimeout(() => {
+                document.getElementById('v-step-loading').classList.remove('active');
+                document.getElementById('v-step-lead').classList.add('active');
+            }, 1000);
+        }
+
+        document.getElementById('v-lead-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const lead = {
+                type: 'CALCULATOR_LEAD',
+                timestamp: new Date().toISOString(),
+                name: this.name.value,
+                email: this.email.value,
+                phone: this.phone.value,
+                preferred_date: this.preferred_date ? this.preferred_date.value : '',
+                pool_shape: poolData.shape,
+                estimated_volume: poolData.volume + ' ' + (isMetric ? 'Liters' : 'Gallons'),
+                casl_optin: document.getElementById('v-optin').checked,
+                page_domain: 'hamiltonpoolservices.ca'
+            };
+            saveAndDispatchLead(lead);
+            document.getElementById('final-volume').innerText = poolData.volume.toLocaleString();
+            document.getElementById('v-step-lead').classList.remove('active');
+            document.getElementById('v-step-success').classList.add('active');
+        });
+    </script>
+</body>
+</html>
