@@ -1,0 +1,183 @@
+<table style="background-color: #081D3D; padding: 30px 10px;" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody>
+    <tr>
+      <td align="center">
+        <table style="max-width: 600px; background-color: #0A111E; border-radius: 20px; overflow: hidden; border: 2px solid #FFC700; box-shadow: 0 12px 40px rgba(0,0,0,0.6);" border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tbody>
+            <tr>
+              <td style="padding: 24px 20px; background: linear-gradient(135deg, #0F2B5C 0%, #081D3D 100%); border-bottom: 1px solid #1E2D4A;" align="center">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tbody>
+                    <tr>
+                      <td style="background-color: #FFC700; border-radius: 8px; padding: 12px 16px;" align="center">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 16px; color: #081D3D; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">
+                          <strong>🚨 NEW BOOKING LEAD GENERATED</strong>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 24px 28px 12px 28px;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tbody>
+                    <tr>
+                      <td style="padding-bottom: 16px;" align="center">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 16px; color: #E2E8F0; font-weight: 700;">
+                          <strong>⚡ New customer inquiry submitted on <span style="color: #00A3E0;">hamiltonpoolservices.ca</span></strong>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                          <tbody>
+                            <tr>
+                              <td style="background-color: #0072CE; border-radius: 10px; padding: 12px 0;" width="48%" align="center">
+                                <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 16px;">
+                                  <a target="_blank" rel="noopener noreferrer nofollow" href="tel:{{contact.phone}}" style="color: #FFFFFF; text-decoration: none;">
+                                    <strong>📞 Call Lead Now</strong>
+                                  </a>
+                                </p>
+                              </td>
+                              <td width="4%">&nbsp;</td>
+                              <td style="background-color: #FFC700; border-radius: 10px; padding: 12px 0;" width="48%" align="center">
+                                <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 16px;">
+                                  <a target="_blank" rel="noopener noreferrer nofollow" href="mailto:{{contact.email}}" style="color: #081D3D; text-decoration: none;">
+                                    <strong>✉️ Email Lead</strong>
+                                  </a>
+                                </p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 12px 28px 24px 28px;">
+                <table style="background-color: #131E35; border-radius: 14px; border: 1px solid #233454; padding: 20px;" border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tbody>
+                    <tr>
+                      <td colspan="2" style="padding-bottom: 14px; border-bottom: 1px solid #1E2D4A;">
+                        <h3 style="margin: 0px; color: #FFC700; font-family: Verdana, Geneva, sans-serif; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
+                          <strong>👤 Customer Information</strong>
+                        </h3>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top: 14px; color: #94A3B8; font-size: 13px; font-weight: 600; width: 40%;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;"><strong>Submission Source:</strong></p>
+                      </td>
+                      <td style="padding-top: 14px; color: #FFC700; font-size: 13px; font-weight: 800;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;"><strong>{{inboundWebhookRequest.submission_type}}</strong></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top: 10px; color: #94A3B8; font-size: 13px; font-weight: 600;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;"><strong>Full Name:</strong></p>
+                      </td>
+                      <td style="padding-top: 10px; color: #FFFFFF; font-size: 15px; font-weight: 700;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;"><strong>{{inboundWebhookRequest.name}}</strong></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top: 10px; color: #94A3B8; font-size: 13px; font-weight: 600;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;"><strong>Phone Number:</strong></p>
+                      </td>
+                      <td style="padding-top: 10px; color: #00A3E0; font-size: 15px; font-weight: 800;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;">
+                          <a target="_blank" rel="noopener noreferrer nofollow" href="tel:{{contact.phone}}" style="color: #00A3E0; text-decoration: none;"><strong>{{inboundWebhookRequest.phone}}</strong></a>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top: 10px; color: #94A3B8; font-size: 13px; font-weight: 600;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;"><strong>Email Address:</strong></p>
+                      </td>
+                      <td style="padding-top: 10px; color: #FFFFFF; font-size: 14px; font-weight: 600;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;">
+                          <a target="_blank" rel="noopener noreferrer nofollow" href="mailto:{{contact.email}}" style="color: #FFFFFF; text-decoration: underline;"><strong>{{inboundWebhookRequest.email}}</strong></a>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top: 10px; color: #94A3B8; font-size: 13px; font-weight: 600;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;"><strong>Service Required:</strong></p>
+                      </td>
+                      <td style="padding-top: 10px; color: #FFC700; font-size: 15px; font-weight: 800;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;"><strong>{{inboundWebhookRequest.service_required}}</strong></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top: 10px; color: #94A3B8; font-size: 13px; font-weight: 600;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;"><strong>Preferred Date:</strong></p>
+                      </td>
+                      <td style="padding-top: 10px; color: #FFFFFF; font-size: 14px; font-weight: 700;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;"><strong>{{inboundWebhookRequest.preferred_date}}</strong></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top: 10px; color: #94A3B8; font-size: 13px; font-weight: 600;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;"><strong>City / Area:</strong></p>
+                      </td>
+                      <td style="padding-top: 10px; color: #FFFFFF; font-size: 14px; font-weight: 700;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;"><strong>{{inboundWebhookRequest.service_area}}</strong></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top: 10px; color: #94A3B8; font-size: 13px; font-weight: 600;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;"><strong>Special Notes:</strong></p>
+                      </td>
+                      <td style="padding-top: 10px; color: #CBD5E1; font-size: 13px; line-height: 1.4;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;">{{inboundWebhookRequest.special_requests}}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top: 10px; color: #94A3B8; font-size: 13px; font-weight: 600;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;"><strong>CASL Opt-in:</strong></p>
+                      </td>
+                      <td style="padding-top: 10px; color: #4ADE80; font-size: 13px; font-weight: 700;">
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px;"><strong>{{inboundWebhookRequest.casl_optin}}</strong></p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 0 28px 24px 28px;">
+                <table style="background-color: #1E293B; border-radius: 12px; border-left: 4px solid #00A3E0; padding: 16px;" border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px; color: #00A3E0; font-weight: 800; text-transform: uppercase;">
+                          <strong>⏱ Recommended Follow-Up SLA</strong>
+                        </p>
+                        <p style="margin: 4px 0px 0px 0px; font-family: Verdana, Geneva, sans-serif; font-size: 14px; line-height: 1.5; color: #CBD5E1;">
+                          Target response time: <strong>Under 15 minutes</strong>. Prompt follow-ups increase booking conversion rates by over 70%!
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #060E1A; padding: 20px; border-top: 1px solid #1E2D4A;" align="center">
+                <p style="margin: 0px; font-family: Verdana, Geneva, sans-serif; font-size: 12px; color: #64748B;">
+                  Hamilton Pool Services • Internal Operator Lead Dispatch Engine<br>System Notification Generated via BoostMyLeads
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>

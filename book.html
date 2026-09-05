@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Service Online | Hamilton Pool Services</title>
+    <meta name="description" content="Schedule your pool opening, closing, or maintenance appointment online with Hamilton Pool Services. Fast, easy, and instant calendar booking for Hamilton homeowners.">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0F2B5C",
+                        "navy-deep": "#081D3D",
+                        "ocean-blue": "#0072CE",
+                        "sky-bright": "#00A3E0",
+                        "offer-yellow": "#FFC700",
+                        "urgency-red": "#E31B23",
+                        "background": "#F4F8FC",
+                        "surface": "#FFFFFF",
+                        "on-surface": "#0F172A",
+                        "on-surface-variant": "#475569",
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "button": "10px",
+                    }
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        html {
+            scroll-padding-top: 7rem;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+        }
+        .yellow-glow {
+            box-shadow: 0 0 35px rgba(255, 199, 0, 0.45);
+        }
+        #mobile-menu.active {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: scale(1) !important;
+        }
+        /* Custom Styling for Embedded GHL Calendar Container */
+        .ghl-calendar-card {
+            background: #FFFFFF;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(8, 29, 61, 0.12);
+            border: 1px solid #E2E8F0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-sky-100 selection:text-sky-900 min-h-screen flex flex-col justify-between">
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-navy-deep/95 backdrop-blur-xl flex flex-col items-center justify-center p-6 md:hidden opacity-0 invisible transition-all duration-300 transform scale-95">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white p-2 hover:bg-white/10 rounded-full transition-colors">
+            <span class="material-symbols-outlined text-4xl">close</span>
+        </button>
+        <div class="flex flex-col items-center gap-8 text-center w-full max-w-sm">
+            <div class="flex items-center gap-3">
+                <div class="w-14 h-14 rounded-full bg-white overflow-hidden flex items-center justify-center border-2 border-offer-yellow shadow-md flex-shrink-0 p-0.5">
+                    <img src="hamilton_mascot_logo.jpg" alt="Hamilton Mascot Logo" class="w-full h-full object-contain">
+                </div>
+                <span class="text-2xl font-extrabold text-white tracking-wider font-headline">Hamilton Pool Services</span>
+            </div>
+            <nav class="flex flex-col gap-6 w-full">
+                <a href="index.html" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-offer-yellow transition-colors py-2 uppercase tracking-widest">Home</a>
+                <a href="index.html#special-offer" onclick="toggleMenu()" class="text-2xl font-bold text-offer-yellow hover:text-white transition-colors py-2 uppercase tracking-widest">Sept 15 Closing Special</a>
+                <a href="index.html#services" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-offer-yellow transition-colors py-2 uppercase tracking-widest">Services</a>
+                <a href="book.html" onclick="toggleMenu()" class="text-2xl font-bold text-offer-yellow hover:underline transition-colors py-2 uppercase tracking-widest">Book Online</a>
+                <a href="index.html#contact" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-offer-yellow transition-colors py-2 uppercase tracking-widest">Contact</a>
+            </nav>
+            <div class="mt-8 w-full">
+                <a href="tel:9055597665" class="call-btn bg-offer-yellow text-navy-deep px-8 py-4 rounded-button font-extrabold text-xl w-full flex items-center justify-center gap-3 shadow-xl">
+                    <span class="material-symbols-outlined text-2xl">call</span> Call Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation Bar -->
+    <header class="fixed top-0 w-full z-50 bg-primary/95 backdrop-blur-md border-b border-white/10 text-white shadow-lg">
+        <div class="flex items-center justify-between px-6 h-20 w-full max-w-7xl mx-auto">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-white overflow-hidden flex items-center justify-center border-2 border-offer-yellow shadow-md flex-shrink-0 p-0.5">
+                    <img src="hamilton_mascot_logo.jpg" alt="Hamilton Mascot Logo" class="w-full h-full object-contain">
+                </div>
+                <div class="leading-tight">
+                    <span class="text-xl font-extrabold tracking-tight font-headline block">HAMILTON</span>
+                    <span class="text-xs font-bold tracking-widest text-sky-bright uppercase block">Pool Services</span>
+                </div>
+            </a>
+            <div class="flex items-center gap-8">
+                <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide">
+                    <a href="index.html" class="hover:text-offer-yellow transition-colors">Home</a>
+                    <a href="index.html#special-offer" class="text-offer-yellow hover:underline flex items-center gap-1 font-bold">
+                        <span class="material-symbols-outlined text-base">verified</span> Closing Offer $299
+                    </a>
+                    <a href="index.html#services" class="hover:text-offer-yellow transition-colors">Services</a>
+                    <a href="book.html" class="text-offer-yellow underline flex items-center gap-1 font-bold">
+                        <span class="material-symbols-outlined text-base">calendar_month</span> Book Online
+                    </a>
+                    <a href="index.html#contact" class="hover:text-offer-yellow transition-colors">Contact</a>
+                </nav>
+                <div class="hidden sm:flex items-center gap-4">
+                    <a href="tel:9055597665" class="call-btn bg-offer-yellow text-navy-deep px-6 py-2.5 rounded-button font-extrabold hover:bg-yellow-400 transition-all flex items-center gap-2 text-sm shadow-md">
+                        <span class="material-symbols-outlined text-lg">call</span> Call Now
+                    </a>
+                </div>
+                <button onclick="toggleMenu()" class="material-symbols-outlined text-white text-3xl lg:hidden">menu</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Body -->
+    <main class="pt-20 flex-grow">
+
+        <!-- Booking Header Section -->
+        <section class="relative bg-gradient-to-br from-navy-deep via-primary to-ocean-blue text-white py-16 px-6 overflow-hidden">
+            <!-- Background Image Overlay -->
+            <div class="absolute inset-0 z-0 opacity-30">
+                <img src="hamilton_hero_bg.jpg" alt="Canadian Backyard Pool" class="w-full h-full object-cover">
+            </div>
+            
+            <div class="relative z-10 max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2 bg-offer-yellow/20 backdrop-blur-md px-4 py-2 rounded-full text-offer-yellow text-xs font-black uppercase tracking-widest mb-4 border border-offer-yellow/30">
+                    <span class="material-symbols-outlined text-sm">calendar_month</span> Instant Online Calendar
+                </div>
+                <h1 class="font-headline text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
+                    Book Your Pool Service
+                </h1>
+                <p class="text-slate-200 text-lg sm:text-xl max-w-2xl mx-auto font-normal leading-relaxed">
+                    Select your preferred service date &amp; time below. Our certified technicians will confirm your appointment instantly.
+                </p>
+            </div>
+        </section>
+
+        <!-- GoHighLevel Booking Widget Section -->
+        <section class="py-16 px-4 sm:px-6 max-w-5xl mx-auto -mt-8 relative z-20">
+            <div class="ghl-calendar-card p-4 sm:p-8">
+                
+                <!-- GHL Calendar Widget Embed Container -->
+                <div id="ghl-calendar-embed-wrapper" class="w-full min-h-[680px]">
+                    <!-- 
+                        GOHIGHLEVEL CALENDAR WIDGET EMBED 
+                        Replace the src URL below with your exact GoHighLevel Calendar Widget URL or iFrame code!
+                    -->
+                    <iframe 
+                        src="https://api.leadconnectorhq.com/widget/booking/JgQ17Bo8MTTqCIb9GJBD" 
+                        style="width: 100%; border: none; min-height: 700px; overflow: hidden;" 
+                        scrolling="no" 
+                        id="JgQ17Bo8MTTqCIb9GJBD_1788"
+                        title="Hamilton Pool Services Booking Calendar">
+                    </iframe>
+                    <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Service Assurance Highlights -->
+        <section class="py-12 bg-white border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 rounded-2xl bg-background border border-slate-200/80">
+                        <span class="material-symbols-outlined text-ocean-blue text-4xl mb-3">verified</span>
+                        <h3 class="font-headline text-lg font-bold text-navy-deep mb-2">Guaranteed Date &amp; Time</h3>
+                        <p class="text-sm text-slate-600">Once booked, your slot is locked in. We respect your time with on-time arrival guarantees.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-background border border-slate-200/80">
+                        <span class="material-symbols-outlined text-offer-yellow text-4xl mb-3">sell</span>
+                        <h3 class="font-headline text-lg font-bold text-navy-deep mb-2">$299 Closing Offer</h3>
+                        <p class="text-sm text-slate-600">Lock in your $299 flat-rate closing special before September 15th directly through our calendar.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-background border border-slate-200/80">
+                        <span class="material-symbols-outlined text-ocean-blue text-4xl mb-3">support_agent</span>
+                        <h3 class="font-headline text-lg font-bold text-navy-deep mb-2">Questions or Changes?</h3>
+                        <p class="text-sm text-slate-600">Need help booking? Call our local Hamilton desk directly at <strong>(905) 559-7665</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-deep text-white pt-16 pb-12 px-6 border-t border-white/10 relative">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 mb-12">
+            
+            <div class="md:col-span-5">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-white overflow-hidden flex items-center justify-center border-2 border-offer-yellow shadow-md flex-shrink-0 p-0.5">
+                        <img src="hamilton_mascot_logo.jpg" alt="Hamilton Mascot Logo" class="w-full h-full object-contain">
+                    </div>
+                    <span class="font-headline font-black text-2xl tracking-tight">Hamilton Pool Services</span>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                    CLEAN POOLS. HAPPY HOMES.<br>
+                    Local, reliable, and professional pool care you can count on. We treat every pool like it's our own!
+                </p>
+                <p class="text-xs text-offer-yellow italic font-bold">
+                    LOCAL. RELIABLE. PROFESSIONAL. That's the Hamilton way.
+                </p>
+            </div>
+
+            <div class="md:col-span-3">
+                <h4 class="font-bold text-white text-xs uppercase tracking-widest mb-4">Services</h4>
+                <ul class="space-y-2.5 text-slate-300 text-sm font-medium">
+                    <li><a href="index.html#services" class="hover:text-offer-yellow transition-colors">Weekly Maintenance</a></li>
+                    <li><a href="index.html#special-offer" class="hover:text-offer-yellow transition-colors">Closing Services ($299 Special)</a></li>
+                    <li><a href="index.html#services" class="hover:text-offer-yellow transition-colors">Water Balancing</a></li>
+                    <li><a href="index.html#services" class="hover:text-offer-yellow transition-colors">Equipment Checks</a></li>
+                    <li><a href="index.html#services" class="hover:text-offer-yellow transition-colors">Liner Replacement</a></li>
+                    <li><a href="book.html" class="hover:text-offer-yellow transition-colors">Book Online Calendar</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-4">
+                <h4 class="font-bold text-white text-xs uppercase tracking-widest mb-4">Contact Info</h4>
+                <ul class="space-y-3 text-slate-300 text-sm">
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-offer-yellow">call</span>
+                        <a href="tel:9055597665" class="call-btn hover:underline font-bold text-white">(905) 559-7665</a>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-offer-yellow">language</span>
+                        <a href="https://hamiltonpoolservices.ca" target="_blank" class="hover:underline">hamiltonpoolservices.ca</a>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-offer-yellow">location_on</span>
+                        <span>Proudly Serving Hamilton &amp; Surrounding Areas</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Footer Credits & Developer Attribution -->
+        <div class="max-w-7xl mx-auto border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400 font-medium">
+            <p>&copy; 2026 Hamilton Pool Services. All Rights Reserved. Clean Pools. Happy Homes.</p>
+            <p class="flex items-center gap-1.5 text-slate-300">
+                Developed by <a href="https://boostmyleads.ca" target="_blank" class="font-bold text-offer-yellow hover:underline tracking-wide">Boost My Leads</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Navigation Script -->
+    <script>
+        let isMenuOpen = false;
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            const menu = document.getElementById('mobile-menu');
+            if (isMenuOpen) {
+                menu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                menu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Thank You for Booking - Hamilton Pool Services</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #081D3D; font-family: 'Inter', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+    
+    <!-- Container Table -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #081D3D; padding: 30px 10px;">
+        <tr>
+            <td align="center">
+                
+                <!-- Main Email Card -->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #0A111E; border-radius: 20px; overflow: hidden; border: 1px solid #1E2D4A; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                    
+                    <!-- Header with Logo -->
+                    <tr>
+                        <td align="center" style="padding: 30px 20px 20px 20px; background: linear-gradient(135deg, #081D3D 0%, #0F2B5C 100%); border-b: 2px solid #FFC700;">
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center">
+                                        <div style="background-color: #FFFFFF; width: 64px; height: 64px; border-radius: 50%; border: 3px solid #FFC700; display: inline-block; overflow: hidden; vertical-align: middle;">
+                                            <img src="https://hamiltonpoolservices.ca/hamilton_mascot_logo.jpg" alt="Hamilton Mascot Logo" width="64" height="64" style="display: block; border: 0; width: 100%; height: 100%; object-fit: contain;" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="padding-top: 12px;">
+                                        <h1 style="margin: 0; color: #FFFFFF; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase;">HAMILTON POOL SERVICES</h1>
+                                        <p style="margin: 3px 0 0 0; color: #00A3E0; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">Clean Pools. Happy Homes.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Headline & Greeting -->
+                    <tr>
+                        <td style="padding: 32px 28px 16px 28px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td style="background-color: #0072CE; border-radius: 12px; padding: 14px 20px; text-align: center;">
+                                        <p style="margin: 0; color: #FFFFFF; font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">
+                                            🎉 Booking Request Received!
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top: 24px; color: #E2E8F0; font-size: 16px; line-height: 1.6;">
+                                        Hello <strong style="color: #FFC700;">{{contact.first_name}}</strong>,<br/><br/>
+                                        Thank you for choosing <strong>Hamilton Pool Services</strong>! We have successfully received your service request. Our local pool technician team is reviewing your preferred schedule and will reach out shortly via phone or email to confirm your appointment.
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Booking Summary Card -->
+                    <tr>
+                        <td style="padding: 0 28px 24px 28px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #131E35; border-radius: 14px; border: 1px solid #233454; padding: 20px;">
+                                <tr>
+                                    <td colspan="2" style="padding-bottom: 14px; border-bottom: 1px solid #1E2D4A;">
+                                        <h3 style="margin: 0; color: #FFC700; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
+                                            📋 Reservation Summary
+                                        </h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top: 14px; color: #94A3B8; font-size: 13px; font-weight: 600; width: 40%;">Client Name:</td>
+                                    <td style="padding-top: 14px; color: #FFFFFF; font-size: 14px; font-weight: 700;">{{contact.name}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top: 10px; color: #94A3B8; font-size: 13px; font-weight: 600;">Service Requested:</td>
+                                    <td style="padding-top: 10px; color: #00A3E0; font-size: 14px; font-weight: 800;">{{contact.service_required}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top: 10px; color: #94A3B8; font-size: 13px; font-weight: 600;">Preferred Date:</td>
+                                    <td style="padding-top: 10px; color: #FFC700; font-size: 14px; font-weight: 700;">{{contact.preferred_date}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top: 10px; color: #94A3B8; font-size: 13px; font-weight: 600;">City / Service Area:</td>
+                                    <td style="padding-top: 10px; color: #FFFFFF; font-size: 14px; font-weight: 700;">{{contact.service_area}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-top: 10px; color: #94A3B8; font-size: 13px; font-weight: 600;">Phone Number:</td>
+                                    <td style="padding-top: 10px; color: #FFFFFF; font-size: 14px; font-weight: 700;">{{contact.phone}}</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Special Offer Banner -->
+                    <tr>
+                        <td style="padding: 0 28px 24px 28px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #1E293B; border-radius: 12px; border-left: 4px solid #FFC700; padding: 16px;">
+                                <tr>
+                                    <td>
+                                        <p style="margin: 0; color: #FFC700; font-size: 13px; font-weight: 800; text-transform: uppercase;">
+                                            ⭐ Early Closing Discount ($299 Special)
+                                        </p>
+                                        <p style="margin: 4px 0 0 0; color: #CBD5E1; font-size: 13px; line-height: 1.5;">
+                                            Book your pool closing before <strong>September 15th</strong> to lock in our flat-rate $299 special (Regular $399). Includes deep line blowouts, chemical shock, and safety cover installation!
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Call To Action Button -->
+                    <tr>
+                        <td align="center" style="padding: 0 28px 32px 28px;">
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center" style="background-color: #FFC700; border-radius: 10px;">
+                                        <a href="tel:9055597665" target="_blank" style="display: inline-block; padding: 14px 28px; color: #081D3D; font-size: 15px; font-weight: 900; text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px;">
+                                            📞 Need Urgent Assistance? Call (905) 559-7665
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Footer Section -->
+                    <tr>
+                        <td align="center" style="background-color: #060E1A; padding: 24px 20px; border-t: 1px solid #1E2D4A;">
+                            <p style="margin: 0; color: #94A3B8; font-size: 12px; line-height: 1.5;">
+                                <strong>Hamilton Pool Services</strong> | Clean Pools. Happy Homes.<br/>
+                                Proudly serving Hamilton, Ancaster, Dundas, Stoney Creek, &amp; Waterdown.<br/>
+                                Website: <a href="https://hamiltonpoolservices.ca" target="_blank" style="color: #00A3E0; text-decoration: none;">hamiltonpoolservices.ca</a>
+                            </p>
+                            <p style="margin: 12px 0 0 0; color: #64748B; font-size: 11px;">
+                                You are receiving this confirmation email because you submitted a service inquiry on hamiltonpoolservices.ca.
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+                
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
