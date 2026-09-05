@@ -747,7 +747,7 @@
         let currentModalService = "Closing Special $299";
 
         // Webhook Endpoint Configuration
-        let GHL_WEBHOOK_URL = localStorage.getItem('hamilton_ghl_webhook') || "https://services.leadconnectorhq.com/hooks/sample_endpoint";
+        let GHL_WEBHOOK_URL = localStorage.getItem('hamilton_ghl_webhook') || "https://services.leadconnectorhq.com/hooks/JgQ17Bo8MTTqCIb9GJBD/webhook-trigger/26d19bdc-c15e-4eae-bf7a-4e60aa5feef1";
 
         document.addEventListener('DOMContentLoaded', () => {
             initCallTracking();
@@ -794,7 +794,7 @@
 
             const callLog = JSON.parse(localStorage.getItem('hamilton_lead_logs') || '[]');
             const event = {
-                type: 'CLICK_TO_CALL',
+                submission_type: 'CLICK_TO_CALL',
                 timestamp: new Date().toISOString(),
                 phone: '(905) 559-7665',
                 source: window.location.href,
@@ -807,19 +807,35 @@
             postToGHL(event);
         }
 
+        function splitName(fullName) {
+            const parts = (fullName || '').trim().split(/\s+/);
+            return {
+                first_name: parts[0] || '',
+                last_name: parts.slice(1).join(' ') || ''
+            };
+        }
+
         function handleMainFormSubmit(e) {
             e.preventDefault();
+            const fullName = document.getElementById('main-name').value;
+            const nameParts = splitName(fullName);
+
             const lead = {
-                type: 'FORM_SUBMISSION',
+                submission_type: 'FORM_SUBMISSION',
                 timestamp: new Date().toISOString(),
-                name: document.getElementById('main-name').value,
+                name: fullName,
+                first_name: nameParts.first_name,
+                last_name: nameParts.last_name,
                 phone: document.getElementById('main-phone').value,
                 email: document.getElementById('main-email').value,
                 service: document.getElementById('main-service').value,
+                service_required: document.getElementById('main-service').value,
                 preferred_date: document.getElementById('main-date').value,
                 city: document.getElementById('main-city').value,
+                service_area: document.getElementById('main-city').value,
                 notes: document.getElementById('main-notes').value,
-                casl_optin: document.getElementById('main-optin').checked,
+                special_requests: document.getElementById('main-notes').value,
+                casl_optin: document.getElementById('main-optin').checked ? 'Yes' : 'No',
                 page_domain: 'hamiltonpoolservices.ca'
             };
 
@@ -831,16 +847,23 @@
 
         function handleModalFormSubmit(e) {
             e.preventDefault();
+            const fullName = document.getElementById('modal-name').value;
+            const nameParts = splitName(fullName);
+
             const lead = {
-                type: 'MODAL_RESERVATION',
+                submission_type: 'MODAL_RESERVATION',
                 timestamp: new Date().toISOString(),
-                name: document.getElementById('modal-name').value,
+                name: fullName,
+                first_name: nameParts.first_name,
+                last_name: nameParts.last_name,
                 phone: document.getElementById('modal-phone').value,
                 email: document.getElementById('modal-email').value,
                 service: currentModalService,
+                service_required: currentModalService,
                 preferred_date: document.getElementById('modal-date').value,
                 city: document.getElementById('modal-city').value,
-                casl_optin: document.getElementById('modal-optin').checked,
+                service_area: document.getElementById('modal-city').value,
+                casl_optin: document.getElementById('modal-optin').checked ? 'Yes' : 'No',
                 page_domain: 'hamiltonpoolservices.ca'
             };
 
@@ -922,16 +945,21 @@
 
         document.getElementById('v-lead-form').addEventListener('submit', function(e) {
             e.preventDefault();
+            const fullName = this.name.value;
+            const nameParts = splitName(fullName);
+
             const lead = {
-                type: 'CALCULATOR_LEAD',
+                submission_type: 'CALCULATOR_LEAD',
                 timestamp: new Date().toISOString(),
-                name: this.name.value,
+                name: fullName,
+                first_name: nameParts.first_name,
+                last_name: nameParts.last_name,
                 email: this.email.value,
                 phone: this.phone.value,
                 preferred_date: this.preferred_date ? this.preferred_date.value : '',
                 pool_shape: poolData.shape,
                 estimated_volume: poolData.volume + ' ' + (isMetric ? 'Liters' : 'Gallons'),
-                casl_optin: document.getElementById('v-optin').checked,
+                casl_optin: document.getElementById('v-optin').checked ? 'Yes' : 'No',
                 page_domain: 'hamiltonpoolservices.ca'
             };
             saveAndDispatchLead(lead);
