@@ -106,11 +106,15 @@
                 <a href="#special-offer" onclick="toggleMenu()" class="text-2xl font-bold text-offer-yellow hover:text-white transition-colors py-2 uppercase tracking-widest">Sept 15 Closing Special</a>
                 <a href="#services" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-offer-yellow transition-colors py-2 uppercase tracking-widest">Services</a>
                 <a href="#calculator" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-offer-yellow transition-colors py-2 uppercase tracking-widest">Calculator</a>
-                <a href="#contact" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-offer-yellow transition-colors py-2 uppercase tracking-widest">Contact &amp; Book</a>
+                <a href="book.html" onclick="toggleMenu()" class="text-2xl font-bold text-offer-yellow hover:underline transition-colors py-2 uppercase tracking-widest">Book Now</a>
+                <a href="#contact" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-offer-yellow transition-colors py-2 uppercase tracking-widest">Contact</a>
             </nav>
-            <div class="mt-8 w-full">
-                <a href="tel:9055597665" class="call-btn bg-offer-yellow text-navy-deep px-8 py-4 rounded-button font-extrabold text-xl w-full flex items-center justify-center gap-3 shadow-xl">
-                    <span class="material-symbols-outlined text-2xl">call</span> Call Now
+            <div class="mt-8 w-full flex flex-col gap-3">
+                <a href="book.html" class="bg-offer-yellow text-navy-deep px-8 py-4 rounded-button font-extrabold text-xl w-full flex items-center justify-center gap-3 shadow-xl">
+                    <span class="material-symbols-outlined text-2xl">calendar_month</span> Book Now
+                </a>
+                <a href="tel:9055597665" class="call-btn bg-white/10 text-white border border-white/20 px-8 py-3 rounded-button font-bold text-lg w-full flex items-center justify-center gap-3">
+                    <span class="material-symbols-outlined text-xl">call</span> Call (905) 559-7665
                 </a>
             </div>
         </div>
@@ -136,11 +140,14 @@
                     </a>
                     <a href="#services" class="hover:text-offer-yellow transition-colors">Services</a>
                     <a href="#calculator" class="hover:text-offer-yellow transition-colors">Volume Calculator</a>
+                    <a href="book.html" class="text-offer-yellow hover:underline flex items-center gap-1 font-bold">
+                        <span class="material-symbols-outlined text-base">calendar_month</span> Book Now
+                    </a>
                     <a href="#contact" class="hover:text-offer-yellow transition-colors">Contact</a>
                 </nav>
                 <div class="hidden sm:flex items-center gap-4">
-                    <a href="tel:9055597665" class="call-btn bg-offer-yellow text-navy-deep px-6 py-2.5 rounded-button font-extrabold hover:bg-yellow-400 transition-all flex items-center gap-2 text-sm shadow-md">
-                        <span class="material-symbols-outlined text-lg">call</span> Call Now
+                    <a href="book.html" class="bg-offer-yellow text-navy-deep px-6 py-2.5 rounded-button font-extrabold hover:bg-yellow-400 transition-all flex items-center gap-2 text-sm shadow-md">
+                        <span class="material-symbols-outlined text-lg">calendar_month</span> Book Now
                     </a>
                 </div>
                 <button onclick="toggleMenu()" class="material-symbols-outlined text-white text-3xl lg:hidden">menu</button>
@@ -452,18 +459,13 @@
                         <!-- Step Lead Form -->
                         <div class="pe-step" id="v-step-lead">
                             <h4 class="text-xl font-bold mb-2 text-center text-navy-deep">Calculation Ready!</h4>
-                            <p class="text-slate-500 text-center text-sm mb-6">Enter your contact info to unlock your volume result and receive your custom care proposal.</p>
+                            <p class="text-slate-500 text-center text-sm mb-6">Enter your name and email to unlock your pool volume report.</p>
                             <form id="v-lead-form" class="space-y-3">
                                 <input type="text" name="name" placeholder="Full Name" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
                                 <input type="email" name="email" placeholder="Email Address" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
-                                <input type="tel" name="phone" placeholder="Phone Number" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
-                                <div>
-                                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Preferred Date</label>
-                                    <input type="date" name="preferred_date" required min="2026-08-10" value="2026-09-10" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-ocean-blue text-sm">
-                                </div>
                                 <div class="flex items-start gap-2 text-xs text-slate-500 mt-2">
                                     <input type="checkbox" id="v-optin" required class="mt-0.5 rounded border-slate-300 text-ocean-blue focus:ring-ocean-blue">
-                                    <label for="v-optin">I consent to receive SMS and email communications regarding my pool service quote from Hamilton Pool Services as per CASL guidelines. You can opt out at any time.</label>
+                                    <label for="v-optin">I consent to receive email communications regarding my pool volume report &amp; quotes from Hamilton Pool Services as per CASL guidelines. You can opt out at any time.</label>
                                 </div>
                                 <button type="submit" class="w-full bg-offer-yellow text-navy-deep py-4 rounded-button font-black mt-2 shadow-lg hover:bg-yellow-400 transition-all text-base">View Volume Report</button>
                             </form>
@@ -748,6 +750,7 @@
 
         // Webhook Endpoint Configuration
         let GHL_WEBHOOK_URL = localStorage.getItem('hamilton_ghl_webhook') || "https://services.leadconnectorhq.com/hooks/JgQ17Bo8MTTqCIb9GJBD/webhook-trigger/dec5f4d9-0784-4ca4-9dde-13fbc16e7669";
+        let CALCULATOR_GHL_WEBHOOK_URL = localStorage.getItem('hamilton_calculator_ghl_webhook') || GHL_WEBHOOK_URL;
 
         document.addEventListener('DOMContentLoaded', () => {
             initCallTracking();
@@ -955,18 +958,32 @@
                 first_name: nameParts.first_name,
                 last_name: nameParts.last_name,
                 email: this.email.value,
-                phone: this.phone.value,
-                preferred_date: this.preferred_date ? this.preferred_date.value : '',
                 pool_shape: poolData.shape,
                 estimated_volume: poolData.volume + ' ' + (isMetric ? 'Liters' : 'Gallons'),
                 casl_optin: document.getElementById('v-optin').checked ? 'Yes' : 'No',
                 page_domain: 'hamiltonpoolservices.ca'
             };
-            saveAndDispatchLead(lead);
+            saveAndDispatchCalculatorLead(lead);
             document.getElementById('final-volume').innerText = poolData.volume.toLocaleString();
             document.getElementById('v-step-lead').classList.remove('active');
             document.getElementById('v-step-success').classList.add('active');
         });
+
+        function saveAndDispatchCalculatorLead(lead) {
+            let leads = parseInt(localStorage.getItem('hamilton_total_leads') || '0', 10);
+            leads += 1;
+            localStorage.setItem('hamilton_total_leads', leads.toString());
+
+            const leadLog = JSON.parse(localStorage.getItem('hamilton_lead_logs') || '[]');
+            leadLog.unshift(lead);
+            localStorage.setItem('hamilton_lead_logs', JSON.stringify(leadLog));
+
+            fetch(CALCULATOR_GHL_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(lead)
+            }).catch(err => console.warn("Calculator Webhook Notice:", err));
+        }
     </script>
 </body>
 </html>
